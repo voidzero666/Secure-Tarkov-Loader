@@ -12,6 +12,8 @@
 #include <string>
 #include <direct.h>
 
+#include "sha256.h"
+
 
 DWORD disk_serialINT;
 SYSTEM_INFO siSysInfo;
@@ -19,9 +21,11 @@ DWORD hwid;
 
 bool  verified = false;
 
-DWORD users[] = {
-    813572345, //discordname 813572345
-    813572345, //Stingray#6813
+std::string users[] = {
+    "73a12c4ce6c8f16a62ebad5d096f1cf2b55e81f32ab3128c0ef8ac772ea20363", //discordname 813572345
+    "73a12c4ce6c8f16a62ebad5d096f1cf2b55e81f32ab3128c0ef8ac772ea20363", //Stingray#6813
+    "759ea3ab7ce5d59160769d169d3a59444f571590d6e8a11b60051cc6a147ee4e", //jojo
+    "3f1ab4918e222b03292b894900c8288240eebc81ece838446e784b519d436337", //evilyoshi
 };
 
 DWORD WINAPI reCheck(LPVOID PARAMS) {
@@ -96,12 +100,15 @@ int main()
 
     // get volume info of c drive 
     GetVolumeInformationA("C:\\", NULL, NULL, &disk_serialINT, NULL, NULL, NULL, NULL);
+    std::string hashed = sha256(std::to_string(disk_serialINT));
+
+    std::cout << hashed << std::endl;
 
     //loop through array and check hwid
-    for (DWORD user : users) {
+    for (std::string user : users) {
        // std::cout << user << std::endl;
 
-        if (user == disk_serialINT) {
+        if (user == hashed) {
             verified = true;
         }
     }
@@ -140,7 +147,6 @@ int main()
     std::cout << "Tarkov Root Dir: " << installfolder << std::endl;
 
     CopyFileA(copyfolder.c_str(), "C:\\dev\\Assembly-CSharp.dll", TRUE);
-
 
     std::cout << "Please start escape from tarkov!" << std::endl;
 

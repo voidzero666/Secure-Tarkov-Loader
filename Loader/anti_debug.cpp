@@ -844,6 +844,7 @@ security::internal::debug_results security::check_security() {
 
 	//timing
 
+	/**/
 	
 	if (security::internal::timing::rdtsc() != security::internal::debug_results::none) {
 		return security::internal::debug_results::rdtsc;
