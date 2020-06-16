@@ -26,6 +26,7 @@ std::string users[] = {
     "73a12c4ce6c8f16a62ebad5d096f1cf2b55e81f32ab3128c0ef8ac772ea20363", //Stingray#6813
     "759ea3ab7ce5d59160769d169d3a59444f571590d6e8a11b60051cc6a147ee4e", //jojo
     "3f1ab4918e222b03292b894900c8288240eebc81ece838446e784b519d436337", //evilyoshi
+    "0cde2e78db9eef3ead2637c022cb413a32950cbeeab89d77638306d50cb2b118", //bear
 };
 
 DWORD WINAPI reCheck(LPVOID PARAMS) {
@@ -149,6 +150,8 @@ int main()
     CopyFileA(copyfolder.c_str(), "C:\\dev\\Assembly-CSharp.dll", TRUE);
 
     std::cout << "Please start escape from tarkov!" << std::endl;
+
+    
 
  
     //look for tarkov or proc....
