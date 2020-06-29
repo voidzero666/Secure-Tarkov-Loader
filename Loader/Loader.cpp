@@ -1,6 +1,5 @@
 // Loader.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
 //created by voidzero-development 15/06/2020
 
 #include <iostream>
@@ -11,9 +10,7 @@
 #include <tlhelp32.h>
 #include <string>
 #include <direct.h>
-
 #include "sha256.h"
-
 
 DWORD disk_serialINT;
 SYSTEM_INFO siSysInfo;
@@ -88,7 +85,6 @@ std::string get_str_between_two_str(const std::string& s, const std::string& sta
 
 int main()
 {
-    
     if (security::check_security() != security::internal::debug_results::none) {
         exit(0);
     }
@@ -96,7 +92,7 @@ int main()
         std::cout << "Welcome to Escape from gopnik loader!\n";
     }
 
-     //start antidebug
+     //start antidebug thread
     CreateThread(0, 0, &reCheck, 0, 0, 0);
 
     // get volume info of c drive 
@@ -122,7 +118,6 @@ int main()
     //make tarkov dev dir
     _mkdir("C:\\dev");
 
-
     char* pValue;
     size_t len;
     errno_t err = _dupenv_s(&pValue, &len, "APPDATA");
@@ -137,7 +132,6 @@ int main()
     myfile.open(cfg_path);
     getline(myfile, line);
 
-
     std::string start_delim = "gameRootDir\":\"";
     std::string stop_delim = "EFT (live)";
     
@@ -150,9 +144,6 @@ int main()
     CopyFileA(copyfolder.c_str(), "C:\\dev\\Assembly-CSharp.dll", TRUE);
 
     std::cout << "Please start escape from tarkov!" << std::endl;
-
-    
-
  
     //look for tarkov or proc....
     while (FindProcessId(L"EscapeFromTarkov.exe") == 0) {
