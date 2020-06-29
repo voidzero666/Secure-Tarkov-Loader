@@ -1,2 +1,4 @@
 # Secure-Tarkov-Loader
-secure tarkov loader
+Secure tarkov cheat loader
+
+Use a secure packer to prevent dumping of DLL
